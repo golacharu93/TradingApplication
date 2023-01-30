@@ -1,0 +1,84 @@
+﻿    
+@model TradingApplication.Models.UserData;
+<div class="text-center">
+
+    <h1 class="display-4">Registeration</h1>
+    <p>Register as New Employee.</p>
+</div>
+<div>
+    <form method="post" enctype="multipart/form-data" asp-controller="Registration" asp-action="UserRegistration">
+
+        <div class="bar1">
+            <table class="table table-bordered text-center border-white center" style="color:black; font-family:Artbrush">
+                <tr>
+                    <td></td>
+                    <td class=" text-center">Trading Registeration Page:</td>
+
+                </tr>
+
+                <tr>
+                    <td>First Name</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Name, null, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Name, null, new { @class = "redcolor" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email-ID</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Email, null, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Email, null, new { @class = "redcolor" })
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Password</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Pwd, null, new { @maxlength = "10", @class = "form-control", @type = "password" })
+                        @Html.ValidationMessageFor(model => model.Pwd, null, new { @class = "redcolor" })
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Confirm Password</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.ConfirmPassword, null, new { @class = "form-control", @type = "password" })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, null, new { @class = "redcolor" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Upload Photo</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Image, new { Type = "File", @class = "input-file" })
+                        @Html.ValidationMessageFor(model => model.Image, null, new { @class = "redcolor" })
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td> <input class="btn-dark" id="Submit" type="Submit" value="Submit Details" /></td>
+                </tr>
+                <tr style="color:red">
+                    <td></td>
+                    <td>
+                        <label>@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                    </td>
+                <tr>
+                    <td></td>
+                    <td style="color:green">
+                        @if (Model.success)
+                        {
+                            <p>Hurray!! You are Succesfully Registered.Please validate your account by visiting your Mail-ID.</p>
+                            <p>Click here for: @Html.ActionLink("Login", "UserLogin", "Registration") </p>
+                        }
+                    </td>
+                </tr>
+
+
+            </table>
+        </div>
+    </form>
+</div>
+
