@@ -31,7 +31,7 @@ namespace TradingApplication
 
             services.AddDbContext<DatabaseContext>(options =>
 
-           options.UseSqlServer(Configuration.GetConnectionString("Db_TradingUser")));
+           options.UseSqlServer(Configuration.GetConnectionString("Db_TradingApp")));
 
             services.AddDistributedMemoryCache();
 
